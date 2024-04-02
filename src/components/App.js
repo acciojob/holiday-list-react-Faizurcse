@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import './../styles/App.css';
-
+import OrderredList from './OrderredList'
 const App = () => {
     const cityList = [{ name: 'Goa', country: 'India' },
     { name: 'Amsterdam', country: 'Netherlands' },
@@ -33,9 +33,17 @@ const App = () => {
     { name: 'Tirupati', country: 'India' },
     ]
     
+    const[indiacity,setIndiacity] = useState([])
+
+    useEffect(()=>{
+      const a = cityList.filter(c=> c.country==='India');
+       setIndiacity(a)
+      
+    },[])
+    console.log(indiacity)
   return (
     <div id="main">
-               {/* Do not remove the main div */}
+      <OrderredList indiacity={indiacity}/>
     </div>
   )
 }
